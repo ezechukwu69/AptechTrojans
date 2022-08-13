@@ -1,0 +1,29 @@
+<div
+  class="list-group list-group-flush"
+  style="max-height: 400px; overflow-y: scroll"
+>
+  <div *ngIf="appointments$ | async as appointments">
+    <ng-container *ngIf="appointments.length > 0; else empty">
+      <a
+        *ngFor="let v of appointments"
+        href="#"
+        class="list-group-item list-group-item-action list-group-item-light"
+        aria-current="true"
+      >
+        <div class="w-100">
+          <h5 class="mb-1 fs-6">{{ v.fullName }}</h5>
+        </div>
+        <p class="mb-1">{{ v.pOfVisit }}</p>
+        <small class="fw-medium">Scheduled for {{ v.schedule }}</small>
+      </a>
+    </ng-container>
+    <ng-template #empty>
+      <div
+        class="w-100 d-flex align-items-center justify-content-center"
+        style="margin: 100px 0"
+      >
+        <small class="ms-2"> No Health appointments added </small>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<form
+  class="card w-100 h-100"
+  style="background-color: white"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="card-body">
+    <h5 class="card-title mb">Personal Health Vitals</h5>
+    <div class="mb-2 mt-4">
+      <label for="category" class="form-label">Category</label>
+      <select
+        formControlName="category"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <label for="category" class="form-label">Category</label>
+        <option
+          id="category"
+          *ngFor="let vitalType of vitalsTypes; let i = index; trackBy: tracker"
+          [value]="vitalType.name"
+          [selected]="i === 0"
+        >
+          {{ vitalType.name }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 w-100">
+      <label for="value" class="form-label">Value</label>
+      <input
+        id="value"
+        type="text"
+        formControlName="value"
+        class="form-control"
+        id="fname"
+        placeholder="e.g 2"
+      />
+      <div class="w-100 d-flex align-items-end">
+        <small>{{ unit }}</small>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="schedule" class="form-label">Date Recorded</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        formControlName="dateRecorded"
+        id="schedule"
+        placeholder="Schedule"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!form.valid">
+      Add
+    </button>
+  </div>
+</form>

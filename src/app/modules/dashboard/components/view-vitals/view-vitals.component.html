@@ -1,0 +1,29 @@
+<div
+  class="list-group list-group-flush"
+  style="max-height: 400px; overflow-y: scroll"
+>
+  <div *ngIf="vitals$ | async as vitals">
+    <ng-container *ngIf="vitals.length > 0; else empty">
+      <a
+        *ngFor="let v of vitals"
+        href="#"
+        class="list-group-item list-group-item-action list-group-item-light"
+        aria-current="true"
+      >
+        <div class="w-100">
+          <h5 class="mb-1 fs-6">{{ v.category }}</h5>
+        </div>
+        <p class="mb-1">{{ v.value }} {{ v.unit }}</p>
+        <small class="fw-medium">Recorded on {{ v.dateRecorded }}</small>
+      </a>
+    </ng-container>
+    <ng-template #empty>
+      <div
+        class="w-100 d-flex align-items-center justify-content-center"
+        style="margin: 100px 0"
+      >
+        <small class="ms-2"> No Health vitals added </small>
+      </div>
+    </ng-template>
+  </div>
+</div>

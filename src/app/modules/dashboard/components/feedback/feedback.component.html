@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="mb-2 mt-4">
+    <label for="fname" class="form-label">Full Name</label>
+    <input
+      type="text"
+      formControlName="fullName"
+      class="form-control"
+      id="fname"
+      placeholder="Full name"
+    />
+  </div>
+  <div class="mb-2">
+    <label for="feedback" class="form-label">Feedback</label>
+    <textarea
+      style="max-height: 200px"
+      type="text"
+      formControlName="feedback"
+      class="form-control"
+      id="feedback"
+      placeholder="Feedback"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mt-4" [disabled]="!form.valid">
+    Send
+  </button>
+</form>

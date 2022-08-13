@@ -1,0 +1,74 @@
+<form class="card w-100 h-100" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="card-body">
+    <h5 class="card-title mb">Dosage Schedule</h5>
+    <div class="mb-2 mt-4">
+      <label for="fname" class="form-label">Medicine</label>
+      <input
+        type="text"
+        formControlName="medicine"
+        class="form-control"
+        id="fname"
+        placeholder="e.g Paracetamol"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="fname" class="form-label">Dose</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="dose"
+        id="fname"
+        placeholder="e.g 2 tablets"
+      />
+    </div>
+    <div class="mb-3">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="day"
+          name="interval"
+          value="day"
+          formControlName="interval"
+          checked
+        />
+        <label class="form-check-label" for="day">Day</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="week"
+          formControlName="interval"
+          name="interval"
+          value="week"
+        />
+        <label class="form-check-label" for="week">Week</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="custom"
+          name="interval"
+          formControlName="interval"
+          value="custom"
+        />
+        <label class="form-check-label" for="custom">Custom</label>
+      </div>
+    </div>
+    <div class="mb-3" *ngIf="customField">
+      <label for="fname" class="form-label">Interval (in days)</label>
+      <input
+        type="number"
+        formControlName="customInterval"
+        class="form-control"
+        id="fname"
+        placeholder="e.g 5"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!formValid">
+      Add
+    </button>
+  </div>
+</form>

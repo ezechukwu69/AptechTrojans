@@ -1,0 +1,39 @@
+<form class="card w-100 h-100" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="card-body">
+    <h5 class="card-title mb">Appointments</h5>
+    <div class="mb-2 mt-4">
+      <label for="fname" class="form-label">Full Name</label>
+      <input
+        type="text"
+        formControlName="fullName"
+        class="form-control"
+        id="fname"
+        placeholder="Full name"
+      />
+    </div>
+    <div class="mb-2">
+      <label for="pvisit" class="form-label">Purpose of visit</label>
+      <textarea
+        style="max-height: 80px"
+        type="text"
+        formControlName="pOfVisit"
+        class="form-control"
+        id="pvisit"
+        placeholder="Purpose of visit"
+      ></textarea>
+    </div>
+    <div class="mb-2">
+      <label for="schedule" class="form-label">Schedule</label>
+      <input
+        formControlName="schedule"
+        type="datetime-local"
+        class="form-control"
+        id="schedule"
+        placeholder="Schedule"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!form.valid">
+      Add
+    </button>
+  </div>
+</form>
